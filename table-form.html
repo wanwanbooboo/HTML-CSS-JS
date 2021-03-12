@@ -1,0 +1,42 @@
+<style>
+.product-table th, .product-table td {
+  font-family: "times new roman", times, serif;
+}
+</style>
+<script>
+function searchTable(inputID, tableID, tdIndex, trIncrement = 1, trOffset = 0) {
+  var input = document.getElementById(inputID);
+  var filter = input.value.toUpperCase();
+  var table = document.getElementById(tableID);
+  var tr = table.getElementsByTagName("tr");
+  for (i = 1+trOffset; i < tr.length; i = i + trIncrement) {
+    var td = tr[i].getElementsByTagName("td")[tdIndex];
+    if (td) {
+      var txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        for (j = 0; j < trIncrement; j++) {
+          tr[i+j-trOffset].style.display = "";
+        }
+      } else {
+        for (j = 0; j < trIncrement; j++) {
+          tr[i+j-trOffset].style.display = "none";
+        }
+      }
+    }       
+  }
+}
+</script>
+<input type="text" id="myInput1" onkeyup="searchTable('myInput1','myTable',0,3,0)" placeholder="Catalog contains.."> -OR- <input type="text" id="myInput2" onkeyup="searchTable('myInput2','myTable',1,3,0)" placeholder="Name contains.."> -OR- <input type="text" id="myInput3" onkeyup="searchTable('myInput3','myTable',2,3,0)" placeholder="Clone contains.."> -OR- <input type="text" id="myInput4" onkeyup="searchTable('myInput4','myTable',3,3,0)" placeholder="Host contains..">
+<input type="text" id="myInputR" onkeyup="searchTable('myInputR','myTable',1,3,1)" placeholder="Cap contains..">
+<table id="myTable" class="product-table">
+<thead><tr class="tableizer-firstrow"><th></th><th>Product Name</th><th>Clone Name</th><th>Host</th><th>Isotype</th></tr></thead><tbody>
+<tr><td>BE0000</td><td>anti-mouse NET</td><td>19G11</td><td>rat</td><td>IgG1</td></tr>
+<tr><td>Cap</td><td>CRISPR13</td><td>1</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td></tr>
+<tr><td>BP0001</td><td>anti-mouse CD3ε F(ab')2 fragment</td><td>145-2C11 f(ab')2 Fragments</td><td>hamster </td><td>IgG2b</td></tr>
+<tr><td>Cap</td><td>CRISPR12</td><td>2</td><td>2</td><td>2</td></tr>
+<tr><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td></tr>
+<tr><td>BE0001-1</td><td>anti-mouse CD3ε</td><td>145-2C11</td><td>Armenian hamster</td><td>IgG</td></tr>
+<tr><td>Cap</td><td>137</td><td>3</td><td>3</td><td>3</td></tr>
+<tr><td>3</td><td>3</td><td>3</td><td>3</td><td>3</td></tr>
+</tbody></table>
