@@ -1,0 +1,65 @@
+<p><span class="exbutton" onclick="toggle('group1',['group2','group3'])";>TRY 1</span><span class="exbutton" onclick="toggle('group2',['group1','group3'])";>TRY 2</span><span class="exbutton" onclick="toggle('group3',['group1','group2'])";>TRY 3</span></p>
+<div class="group1" style="display:none;">1</div>
+<div class="group2" style="display:none;">2</div>
+<div class="group3" style="display:none;">3</div>
+
+<script>
+function toggle(mainClassName, otherClassName){
+    var elements = document.getElementsByClassName(mainClassName)
+    for (var i = 0; i < elements.length; i++){
+        if(elements[i].style.display == "none") {
+            elements[i].style.display = "";
+        } else {
+            elements[i].style.display = "none";
+        }
+    }
+    for (var j = 0; j < otherClassName.length; j++){
+    	var tempElements = document.getElementsByClassName(otherClassName[j])
+	for (var k = 0; k < tempElements.length; k++){
+	   tempElements[k].style.display = "none";
+	}
+    } 
+}
+</script>
+
+<style>
+.group1 {
+  width: 30%;
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  border: red solid 3px;
+}
+.group2 {
+  width: 30%;
+  color: green;
+  font-weight: bold;
+  text-align: center;
+  border: green solid 3px;
+}
+.group3 {
+  width: 30%;
+  color: blue;
+  font-weight: bold;
+  text-align: center;
+  border: blue solid 3px;
+}
+.exbutton {
+  background-color: #3353c5;
+  border: none;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  cursor: pointer;
+  width: 9%;
+}
+.exbutton:hover {
+  opacity: 0.6;
+}
+.exbutton:not(:last-child) {
+  margin-right: 1.5%;
+}
+</style>
